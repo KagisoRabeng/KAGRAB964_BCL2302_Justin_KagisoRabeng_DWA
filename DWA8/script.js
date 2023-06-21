@@ -28,6 +28,7 @@
 
 /** @type {Book[]} */
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
+import { BookPreview } from './book-review.js';
 
 let page = 1; //added the semicoloms 
 let matches = books;
@@ -41,21 +42,51 @@ const starting = document.createDocumentFragment();
  * @returns {HTMLButtonElement} - The preview element.
  */
 
-function createPreviewElement({ author, id, image, title }) {
+// function createPreviewElement({ author, id, image, title }) =>{
+//   const element = document.createElement('button');
+//   element.classList = 'preview';
+//   element.setAttribute('data-preview', id);
+
+//   element.innerHTML = `
+//     <img class="preview__image" src="${image}" />
+//     <div class="preview__info">
+//       <h3 class="preview__title">${title}</h3>
+//       <div class="preview__author">${authors[author]}</div>
+//     </div>
+//   `;
+
+//   return element;
+// }
+
+const createPreviewElement = ({ author, id, image, title }) => {
   const element = document.createElement('button');
   element.classList = 'preview';
   element.setAttribute('data-preview', id);
 
-  element.innerHTML = `
-    <img class="preview__image" src="${image}" />
-    <div class="preview__info">
-      <h3 class="preview__title">${title}</h3>
-      <div class="preview__author">${authors[author]}</div>
-    </div>
-  `;
+  const previewImage = document.createElement('img');
+  previewImage.classList = 'preview__image';
+  previewImage.src = image;
+
+  const previewInfo = document.createElement('div');
+  previewInfo.classList = 'preview__info';
+
+  const previewTitle = document.createElement('h3');
+  previewTitle.classList = 'preview__title';
+  previewTitle.textContent = title;
+
+  const previewAuthor = document.createElement('div');
+  previewAuthor.classList = 'preview__author';
+  previewAuthor.textContent = authors[author];
+
+  previewInfo.appendChild(previewTitle);
+  previewInfo.appendChild(previewAuthor);
+
+  element.appendChild(previewImage);
+  element.appendChild(previewInfo);
 
   return element;
-}
+};
+
 
 for (const book of matches.slice(0, BOOKS_PER_PAGE)) {
   const element = createPreviewElement(book);
