@@ -28,7 +28,7 @@
 
 /** @type {Book[]} */
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
-import { BookPreview } from './book-review.js';
+
 
 let page = 1; //added the semicoloms 
 let matches = books;

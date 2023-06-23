@@ -1,5 +1,6 @@
 import { BOOKS_PER_PAGE, authors, books, genres } from "./data.js";
 import { BookPreview } from "./book-review.js";
+
 // Initialize page and matches
 let page = 1;
 let matches = books;
@@ -32,9 +33,7 @@ function createOptionElements(container, defaultValue, options) {
   }
   document.querySelector(`[data-search-${container}]`).appendChild(fragment);
 }
-// Create option elements for genres and authors
-createOptionElements("genres", "any", genres);
-createOptionElements("authors", "any", authors);
+
 const app = {
   // Initialize the app
   init() {
@@ -75,6 +74,7 @@ const app = {
       });
   },
 };
+
 // Initialize the app
 app.init();
 document
@@ -94,7 +94,8 @@ document
         light: "10, 10, 20",
       },
     };
-   // Apply selected theme
+   
+    
     if (theme === "night") {
       document.documentElement.style.setProperty(
         "--color-dark",

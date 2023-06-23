@@ -22,7 +22,8 @@ export class BookPreview extends HTMLElement {
     // Parse the book data from the "data-book" attribute
     const book = JSON.parse(this.getAttribute("data-book"));
     const { author, image, title } = book;
-    // Set the content of the shadow DOM
+    
+    // Content of the shadow DOM
     this.shadowRoot.innerHTML = `
     <style>
     :host {
