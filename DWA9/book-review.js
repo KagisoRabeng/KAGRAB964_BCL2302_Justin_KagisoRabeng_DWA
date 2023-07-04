@@ -1,3 +1,4 @@
+import { authors } from "./data.js";
 
 // Define a custom element for the book preview
 export class BookPreview extends HTMLElement {
@@ -67,7 +68,7 @@ export class BookPreview extends HTMLElement {
       <img class="preview__image" src="${image}" alt="Book Cover">
       <div class="preview__info">
         <h3 class="preview__title">${title}</h3>
-        <p class="preview__author">${author}</p>
+        <p class="preview__author">${authors[author]}</p>
       </div>
     `;
   }
